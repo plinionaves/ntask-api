@@ -7,21 +7,13 @@ module.exports = app => {
         .get((req, res) => {
             Tasks.findAll({})
                 .then(tasks => res.json(tasks))
-                .catch(error => {
-                    res.status(412).json({
-                        message: error.message || error
-                    });
-                })
+                .catch(app.libs.util.catchError(res, 412))
         })
 
         .post((req, res) => {
             Tasks.create(req.body)
                 .then(task => res.json(task))
-                .catch(error => {
-                    res.status(412).json({
-                        message: error.message || error
-                    })
-                });
+                .catch(app.libs.util.catchError(res, 412));
         });
 
     app.route('/tasks/:id')
@@ -34,31 +26,19 @@ module.exports = app => {
                     } else {
                         res.sendStatus(404);
                     }
-                }).catch(error => {
-                    res.json({
-                        message: error.message || error
-                    })
-                });
+                }).catch(app.libs.util.catchError(res, 412));
         })
 
         .put((req, res) => {
             Tasks.update(rq.body, {where: req.params})
                 .then(result => res.sendStatus(204))
-                .catch(error => {
-                    res.status(412).json({
-                        message: error.message || error
-                    });
-                });
+                .catch(app.libs.util.catchError(res, 412));
         })
 
         .delete((req, res) => {
             Tasks.delete({where: req.params})
                 .then(result => {res.sendStatus(204)})
-                .catch(error => {
-                    res.status(412).json({
-                        message: error.message || message
-                    });
-                });
+                .catch(app.libs.util.catchError(res, 412));
         });
 
 };
