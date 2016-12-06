@@ -1,7 +1,9 @@
 module.exports = app => {
 
-    app.listen(app.get('port'), () => {
-        console.log(`NTask API rodando na porta ${app.get('port')}...`);
+    app.libs.db.sync().done(() => {
+        app.listen(app.get('port'), () => {
+            console.log(`NTask API rodando na porta ${app.get('port')}...`);
+        });
     });
 
 };
