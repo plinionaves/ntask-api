@@ -4,11 +4,6 @@ module.exports = app => {
 
     app.route('/tasks')
 
-        .all((req, res, next) => {
-            if (req.body) delete req.body.id;
-            next();
-        })
-
         .get((req, res) => {
             Tasks.findAll({})
                 .then(tasks => res.json(tasks))
@@ -30,11 +25,6 @@ module.exports = app => {
         });
 
     app.route('/tasks/:id')
-
-        .all((req, res, next) => {
-            if (req.body) delete req.body.id;
-            next();
-        })
 
         .get((req, res) => {
             Tasks.findOne({where: req.params})
