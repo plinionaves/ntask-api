@@ -1,10 +1,11 @@
 module.exports = app => {
 
+    const Tasks = app.models.tasks;
+
     app.get('/tasks', (req, res) => {
-        res.json([
-            {title: 'Aprender Node.js'},
-            {title: 'Aprender Angular2'}
-        ]);
+        Tasks.findAll({}, (tasks) => {
+            res.json(tasks);
+        });
     });
 
 };
