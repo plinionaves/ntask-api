@@ -4,7 +4,8 @@
   "description": "API de gestão de tarefas",
   "main": "index.js",
   "scripts": {
-    "start": "babel-watch index.js"
+    "start": "babel-watch index.js",
+    "test": "SET NODE_ENV=test && mocha test/**/*.js"
   },
   "author": "Plínio Naves <pliniopjn@hotmail.com>",
   "dependencies": {
@@ -21,6 +22,10 @@
     "sequelize": "^3.27.0"
   },
   "devDependencies": {
-    "babel-watch": "^2.0.4"
+    "babel-register": "^6.18.0",
+    "babel-watch": "^2.0.4",
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0",
+    "supertest": "^2.0.1"
   }
 }

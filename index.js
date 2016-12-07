@@ -3,7 +3,7 @@ import consign from 'consign';
 
 const app = express();
 
-consign()
+consign({verbose: false})
     .include('libs/config.js')
     .then('libs/util.js')
     .then('libs/db.js')
@@ -12,3 +12,5 @@ consign()
     .then('routes')
     .then('libs/boot.js')
     .into(app);
+
+module.exports = app;
