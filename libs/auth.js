@@ -11,7 +11,7 @@ module.exports = app => {
     };
 
     const strategy = new Strategy(params, (payload, done) => {
-        console.log(`***** email=${payload.email} *****`);
+        console.log(payload);
         Users.findById(payload.id)
             .then(user => {
                 if (user) {
