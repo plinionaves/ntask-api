@@ -38,7 +38,7 @@ module.exports = app => {
         })
 
         .put((req, res) => {
-            Tasks.update(rq.body, {where: {
+            Tasks.update(req.body, {where: {
                 id: req.params.id,
                 user_id: req.user.id
             }})
@@ -47,7 +47,7 @@ module.exports = app => {
         })
 
         .delete((req, res) => {
-            Tasks.delete({where: {
+            Tasks.destroy({where: {
                 id: req.params.id,
                 user_id: req.user.id
             }})
