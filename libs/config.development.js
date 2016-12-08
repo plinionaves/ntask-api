@@ -1,3 +1,5 @@
+import logger from './logger.js';
+
 module.exports = {
     database: 'ntask',
     username: 'root',
@@ -5,6 +7,9 @@ module.exports = {
     params: {
         host: 'localhost',
         dialect: 'mysql',
+        logging: (sql) => {
+            logger.info(`[${new Date()}] ${sql}`);
+        },
         define: {
             underscored: true
         }
