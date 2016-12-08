@@ -1,7 +1,8 @@
 import bodyParser from 'body-parser';
-import express from 'express';
 import compression from 'compression';
 import cors from 'cors';
+import express from 'express';
+import helmet from 'helmet';
 import morgan from 'morgan';
 import logger from './logger';
 
@@ -15,6 +16,7 @@ module.exports = app => {
             }
         }
     }));
+    app.use(helmet());
     app.use(cors({
         origin: ['http://localhost:4200'],
         methods: ['GET', 'POST', 'PUT', 'DELETE'],
