@@ -1,15 +1,18 @@
 module.exports = {
-    database: 'ntask',
+    database: 'ntask_test',
     username: 'root',
     password: '',
     params: {
         host: 'localhost',
         dialect: 'mysql',
         logging: false,
+        sync: {
+            force: true
+        },
         define: {
             underscored: true
         }
     },
-    jwtSecret: '@Task$-AP1',
+    jwtSecret: 'NTASK_TEST',
     jwtSession: {session: false}
 };
