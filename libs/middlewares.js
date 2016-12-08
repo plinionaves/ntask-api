@@ -1,5 +1,6 @@
 import bodyParser from 'body-parser';
 import express from 'express';
+import compression from 'compression';
 import cors from 'cors';
 import morgan from 'morgan';
 import logger from './logger';
@@ -19,6 +20,7 @@ module.exports = app => {
         methods: ['GET', 'POST', 'PUT', 'DELETE'],
         allowedHeaders: ['Content-Type', 'Authorization']
     }));
+    app.use(compression());
     app.use(bodyParser.json());
     app.use(app.libs.auth.initialize());
     app.use((req, res, next) => {
